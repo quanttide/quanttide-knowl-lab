@@ -120,7 +120,7 @@ func processFile(path, outputDir string) error {
 
 	doc := document.New(path, result.Frontmatter, result.Body)
 
-	outPath := filepath.Join(outputDir, filepath.Base(path)+".json")
+	outPath := filepath.Join(outputDir, strings.ReplaceAll(path, string(filepath.Separator), "_")+".json")
 	f, err := os.Create(outPath)
 	if err != nil {
 		return fmt.Errorf("write error: %w", err)
