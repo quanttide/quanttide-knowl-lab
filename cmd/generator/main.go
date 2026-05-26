@@ -1,6 +1,8 @@
 package main
 
 import (
+	"bufio"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
@@ -10,6 +12,7 @@ import (
 
 	"github.com/quanttide/quanttide-example-of-knowledge-engineering/internal/generator"
 	"github.com/quanttide/quanttide-example-of-knowledge-engineering/internal/rule"
+	"github.com/quanttide/quanttide-example-of-knowledge-engineering/internal/storage"
 )
 
 func main() {
@@ -22,9 +25,9 @@ func main() {
 
 func run(fs *flag.FlagSet, args []string) error {
 	target := fs.String("target", "code", "generator target (code / api / faq)")
-	query := fs.String("query", "", "query to find relevant facts")
+	query := fs.String("query", "", "query predicate (e.g. contains)")
 	output := fs.String("output", "./generated", "output directory or file")
-	rulePath := fs.String("rule", "./rules", "rule file or directory")
+	store := fs.String("store", "./knowl/store.jsonl", "path to store.jsonl")
 	fs.Parse(args)
 
 	gen, err := generator.GetGenerator(*target)
@@ -32,11 +35,12 @@ func run(fs *flag.FlagSet, args []string) error {
 		return err
 	}
 
-	facts, err := loadFacts(*query, *rulePath)
+	facts, err := loadFacts(*store, *query)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "warn: could not load facts from rules: %v\n", err)
-		fmt.Fprintf(os.Stderr, "using fallback sample facts\n")
-		facts = sampleFacts()
+		return err
+	}
+	if len(facts) < generator.MinFacts {
+		return fmt.Errorf("仅 %d 条事实，需要至少 %d 条才能生成", len(facts), generator.MinFacts)
 	}
 
 	result, err := gen.Generate(facts, *query)
@@ -57,70 +61,49 @@ func run(fs *flag.FlagSet, args []string) error {
 		}
 	}
 
-	fmt.Printf("✓ 已生成 %s 到 %s\n", result.Type, result.Path)
+	fmt.Printf("✓ 已生成 %s 到 %s（基于 %d 条事实）\n", result.Type, result.Path, len(facts))
 	return nil
 }
 
-func loadFacts(query, rulePath string) ([]generator.Fact, error) {
-	if query == "" {
-		return nil, fmt.Errorf("no query specified")
-	}
-
-	rs, err := rule.Load(rulePath)
-	if err != nil {
-		return nil, err
-	}
-
-	queryAtom, err := rule.ParseAtom(query)
-	if err != nil {
-		return nil, fmt.Errorf("parse query: %w", err)
-	}
-
-	sampleFacts := loadSampleRuleFacts()
-	results, err := rs.EvaluateQuery(*queryAtom, sampleFacts, 0)
-	if err != nil {
-		return nil, err
-	}
-
-	var facts []generator.Fact
-	for _, r := range results {
-		switch len(r.Args) {
-		case 2:
-			facts = append(facts, generator.Fact{
-				Subject:   r.Args[0],
-				Predicate: r.Predicate,
-				Object:    r.Args[1],
-			})
-		case 3:
-			facts = append(facts, generator.Fact{
-				Subject:   r.Args[0],
-				Predicate: r.Args[1],
-				Object:    r.Args[2],
-			})
+func loadFacts(storePath, query string) ([]generator.Fact, error) {
+	predicate := query
+	if strings.Contains(query, "(") {
+		atom, err := rule.ParseAtom(query)
+		if err == nil {
+			predicate = atom.Predicate
 		}
 	}
 
+	f, err := os.Open(storePath)
+	if err != nil {
+		return nil, fmt.Errorf("打开 store 文件: %w", err)
+	}
+	defer f.Close()
+
+	var facts []generator.Fact
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		line := strings.TrimSpace(scanner.Text())
+		if line == "" {
+			continue
+		}
+		var rec storage.TripleRecord
+		if err := json.Unmarshal([]byte(line), &rec); err != nil {
+			continue
+		}
+		if predicate != "" && rec.Predicate != predicate {
+			continue
+		}
+		facts = append(facts, generator.Fact{
+			Subject:   rec.Subject,
+			Predicate: rec.Predicate,
+			Object:    rec.Object,
+		})
+	}
+	if err := scanner.Err(); err != nil {
+		return nil, err
+	}
 	return facts, nil
-}
-
-func loadSampleRuleFacts() []rule.Fact {
-	return []rule.Fact{
-		{Predicate: "contains", Args: []string{"订单", "商品"}},
-		{Predicate: "contains", Args: []string{"订单", "用户"}},
-		{Predicate: "contains", Args: []string{"商品", "库存"}},
-		{Predicate: "contains", Args: []string{"用户", "地址"}},
-		{Predicate: "subclass", Args: []string{"电子产品", "商品"}},
-	}
-}
-
-func sampleFacts() []generator.Fact {
-	return []generator.Fact{
-		{Subject: "订单", Predicate: "包含", Object: "商品"},
-		{Subject: "订单", Predicate: "属于", Object: "用户"},
-		{Subject: "商品", Predicate: "包含", Object: "库存"},
-		{Subject: "用户", Predicate: "拥有", Object: "地址"},
-		{Subject: "电子产品", Predicate: "子类", Object: "商品"},
-	}
 }
 
 func writeOutput(result *generator.Output, outputPath string) error {
@@ -168,15 +151,13 @@ func gofmt(path string) error {
 
 func init() {
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "用法: go run ./cmd/generator -target <code|api|faq> -query <query> [-output <path>] [-rule <rules>]\n\n")
+		fmt.Fprintf(os.Stderr, "用法: go run ./cmd/generator -target <code|api|faq> -query <predicate> [-output <path>] [-store <store.jsonl>]\n\n")
 		fmt.Fprintf(os.Stderr, "可用生成器:\n")
-		for name, g := range generator.AvailableGenerators {
+		for name := range generator.AvailableGenerators {
 			fmt.Fprintf(os.Stderr, "  %s\n", name)
-			_ = g
 		}
 		fmt.Fprintf(os.Stderr, "\n示例:\n")
-		fmt.Fprintf(os.Stderr, "  go run ./cmd/generator -target code -query \"contains_tc(?X, ?Y)\" -output ./generated\n")
-		fmt.Fprintf(os.Stderr, "  go run ./cmd/generator -target api -query \"contains(?X, ?Y)\" -output ./generated\n")
-		fmt.Fprintf(os.Stderr, "  go run ./cmd/generator -target faq -query \"contains(?X, ?Y)\" -output ./generated\n")
+		fmt.Fprintf(os.Stderr, "  go run ./cmd/generator -target faq -query 是 -output ./wisdom/faq.md\n")
+		fmt.Fprintf(os.Stderr, "  go run ./cmd/generator -target code -query 包含 -output ./wisdom/types.go\n")
 	}
 }

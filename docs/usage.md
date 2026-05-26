@@ -64,17 +64,17 @@ contains_tc(A, B) :- contains(A, B)
 基于推理结果生成三种产物：
 
 ```bash
+# FAQ
+go run ./cmd/generator -target faq -query 是 -output ./wisdom/faq.md -store ./knowl/store.jsonl
+
 # Go 代码
-go run ./cmd/generator -target code -query "contains(?X, ?Y)" -output ./types.go
+go run ./cmd/generator -target code -query 是 -output ./wisdom/types.go -store ./knowl/store.jsonl
 
 # API 设计
-go run ./cmd/generator -target api -query "contains(?X, ?Y)" -output ./api.md
-
-# FAQ
-go run ./cmd/generator -target faq -query "contains(?X, ?Y)" -output ./faq.md
+go run ./cmd/generator -target api -query 是 -output ./wisdom/api.md -store ./knowl/store.jsonl
 ```
 
-不足 3 条事实时拒绝生成。
+不足 3 条事实时拒绝生成。query 参数为谓词名（如"是"、"包含"），只匹配该谓词的三元组。
 输出路径无写入权限时降级到 stdout。
 Go 代码生成后自动 `go fmt`。
 

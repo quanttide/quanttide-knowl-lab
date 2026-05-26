@@ -4,20 +4,19 @@ import (
 	"time"
 )
 
-type 订单 struct {
-	商品 []商品 `json:"商品"`
-	用户 []用户 `json:"用户"`
+type 大部分活页纸 struct {
+	她看不懂的软件设计稿 string `json:"她看不懂的软件设计稿"`
 }
 
-type 商品 struct {
-	库存 []库存 `json:"库存"`
+type 一张活页纸 struct {
+	一封关于她的信 string `json:"一封关于她的信"`
 }
 
-type 用户 struct {
-	地址 []地址 `json:"地址"`
+type 信 struct {
+	29岁的他写给19岁的自己的信 string `json:"29岁的他写给19岁的自己的信"`
 }
 
-type 电子产品 struct {
-	商品 string `json:"商品"`
+type 拖鞋 struct {
+	HelloKitty款式 string `json:"Hello_Kitty_款式"`
 }
 
