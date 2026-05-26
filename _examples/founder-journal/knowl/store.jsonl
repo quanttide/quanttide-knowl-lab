@@ -1,0 +1,59 @@
+{"Subject":"我","Predicate":"感觉","Object":"心里的安全感和控制感变强了","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-19.md"}
+{"Subject":"半自动挡","Predicate":"提升","Object":"工作效率","Confidence":0.7,"Source":"_examples/founder-journal/data/2026-05-19.md"}
+{"Subject":"清醒的自我觉察","Predicate":"是","Object":"AI时代的核心竞争力","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-19.md"}
+{"Subject":"清醒的自我觉察","Predicate":"帮助","Object":"把自己翻译给AI提高生产力","Confidence":0.7,"Source":"_examples/founder-journal/data/2026-05-19.md"}
+{"Subject":"数据契约协议","Predicate":"不适合","Object":"我","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-19.md"}
+{"Subject":"数据契约协议","Predicate":"假设","Object":"相对结构化的数据表格","Confidence":0.7,"Source":"_examples/founder-journal/data/2026-05-19.md"}
+{"Subject":"工具箱最核心的部分","Predicate":"是","Object":"契约","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-19.md"}
+{"Subject":"我","Predicate":"坚持","Object":"在回报低的情况下长期坚持","Confidence":0.7,"Source":"_examples/founder-journal/data/2026-05-19.md"}
+{"Subject":"我","Predicate":"想象","Object":"未来并认为存在路径","Confidence":0.7,"Source":"_examples/founder-journal/data/2026-05-19.md"}
+{"Subject":"AI","Predicate":"缺乏","Object":"准确的抽象和建模能力","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-19.md"}
+{"Subject":"Opencode","Predicate":"存在","Object":"工程质量问题","Confidence":0.7,"Source":"_examples/founder-journal/data/2026-05-20.md"}
+{"Subject":"AI的思路","Predicate":"与","Object":"作者的思路基本一致","Confidence":0.7,"Source":"_examples/founder-journal/data/2026-05-20.md"}
+{"Subject":"作者","Predicate":"进入","Object":"生产级研发阶段","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-20.md"}
+{"Subject":"作者","Predicate":"增加了","Object":"status字段记录当前状态","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-20.md"}
+{"Subject":"作者","Predicate":"增加了","Object":"to do字段记录待办事项","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-20.md"}
+{"Subject":"Roadmap","Predicate":"变为","Object":"小版本发布目标且不写具体做法","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-20.md"}
+{"Subject":"作者","Predicate":"创建了","Object":"4个智能体，每个有4个技能","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-20.md"}
+{"Subject":"智能体的技能","Predicate":"包括","Object":"设计、产品设计、执行迭代、评审、重构","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-20.md"}
+{"Subject":"当前系统的成熟度","Predicate":"被评估为","Object":"5%到8%","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-20.md"}
+{"Subject":"个人规范","Predicate":"经历","Object":"从隐式到显示、从不确定到确定的演化过程","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-22.md"}
+{"Subject":"系统构建","Predicate":"在找到节奏后","Object":"大大加快","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-22.md"}
+{"Subject":"知识云和DevOps云","Predicate":"拥有","Object":"第一个阶段的CLI","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-22.md"}
+{"Subject":"DDD","Predicate":"被用来","Object":"驱动重构","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-22.md"}
+{"Subject":"DDD","Predicate":"存在","Object":"过度建模的可能性","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-22.md"}
+{"Subject":"AI","Predicate":"发现","Object":"模型有问题","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-22.md"}
+{"Subject":"AI","Predicate":"承认","Object":"自己的实现有问题","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-22.md"}
+{"Subject":"AI发现的模型问题","Predicate":"表明","Object":"建模水平已经足够经验","Confidence":0.7,"Source":"_examples/founder-journal/data/2026-05-22.md"}
+{"Subject":"AI发现的两个问题","Predicate":"源于","Object":"对模型理解不够","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-22.md"}
+{"Subject":"双系统切换","Predicate":"导致","Object":"负担很重","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-22.md"}
+{"Subject":"我","Predicate":"正在分开","Object":"example 和 platform","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-23.md"}
+{"Subject":"AI","Predicate":"操作于","Object":"example","Confidence":0.85,"Source":"_examples/founder-journal/data/2026-05-23.md"}
+{"Subject":"智慧","Predicate":"具有","Object":"交付价值的东西","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-23.md"}
+{"Subject":"知识","Predicate":"是","Object":"记忆块","Confidence":0.7,"Source":"_examples/founder-journal/data/2026-05-23.md"}
+{"Subject":"对 AI 的智慧","Predicate":"是","Object":"提示词技能","Confidence":0.85,"Source":"_examples/founder-journal/data/2026-05-23.md"}
+{"Subject":"对人类的智慧","Predicate":"是","Object":"各种产出","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-23.md"}
+{"Subject":"Rust 语言","Predicate":"比","Object":"Python 语言结构化强","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-23.md"}
+{"Subject":"语言的编程习惯","Predicate":"暗示了","Object":"AI 的编程习惯","Confidence":0.75,"Source":"_examples/founder-journal/data/2026-05-23.md"}
+{"Subject":"我的精力","Predicate":"成为","Object":"最贵的资源","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-23.md"}
+{"Subject":"几个小时的 AI 时间","Predicate":"可以换取","Object":"一个小时的我的时间","Confidence":0.85,"Source":"_examples/founder-journal/data/2026-05-23.md"}
+{"Subject":"混合工程","Predicate":"处于","Object":"能上传能下载的状态","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-24.md"}
+{"Subject":"Rust","Predicate":"支持","Object":"符合现代工程规范的机制","Confidence":0.85,"Source":"_examples/founder-journal/data/2026-05-24.md"}
+{"Subject":"Python","Predicate":"需要","Object":"反复调教AI以节省时间","Confidence":0.7,"Source":"_examples/founder-journal/data/2026-05-24.md"}
+{"Subject":"先实验代码再开发的方法","Predicate":"减少","Object":"工程上的难点","Confidence":0.85,"Source":"_examples/founder-journal/data/2026-05-24.md"}
+{"Subject":"研发流程","Predicate":"被","Object":"平滑化","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-24.md"}
+{"Subject":"功能完善","Predicate":"是","Object":"开始上生产的条件","Confidence":0.75,"Source":"_examples/founder-journal/data/2026-05-24.md"}
+{"Subject":"发布新版本","Predicate":"增加","Object":"心理安全感","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-24.md"}
+{"Subject":"课程质量","Predicate":"出现","Object":"明显下降","Confidence":0.7,"Source":"_examples/founder-journal/data/2026-05-24.md"}
+{"Subject":"课堂评估","Predicate":"本质上是","Object":"绩效活动","Confidence":0.75,"Source":"_examples/founder-journal/data/2026-05-24.md"}
+{"Subject":"将绩效引入课堂组织","Predicate":"是","Object":"一个创新点","Confidence":0.7,"Source":"_examples/founder-journal/data/2026-05-24.md"}
+{"Subject":"Token 用量","Predicate":"稳定在","Object":"每天 5 亿左右 10 块钱","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-25.md"}
+{"Subject":"烧 Token 的直接原因","Predicate":"是","Object":"它可以带来产出","Confidence":0.85,"Source":"_examples/founder-journal/data/2026-05-25.md"}
+{"Subject":"知识云","Predicate":"帮助","Object":"抽取文本信息、找到知识结构、构建实验代码","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-25.md"}
+{"Subject":"知识云的核心价值","Predicate":"是","Object":"隐性经验显性化的工业化流水线","Confidence":0.95,"Source":"_examples/founder-journal/data/2026-05-25.md"}
+{"Subject":"从信息到知识这一步","Predicate":"是","Object":"知识抽取的关键","Confidence":0.85,"Source":"_examples/founder-journal/data/2026-05-25.md"}
+{"Subject":"知识云","Predicate":"承担","Object":"大量的实验和探索功能","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-25.md"}
+{"Subject":"人类立宪、AI 立法的角色","Predicate":"正式成立","Object":"根据 AI 反馈","Confidence":0.9,"Source":"_examples/founder-journal/data/2026-05-25.md"}
+{"Subject":"重构的精神","Predicate":"需要","Object":"人类的高质量代码做支撑","Confidence":0.85,"Source":"_examples/founder-journal/data/2026-05-25.md"}
+{"Subject":"安全感","Predicate":"是","Object":"搭基础库时产生的围栏感","Confidence":0.85,"Source":"_examples/founder-journal/data/2026-05-25.md"}
+{"Subject":"审计概念的出现","Predicate":"让作者感觉到","Object":"以后再接入类似功能时不会混乱","Confidence":0.8,"Source":"_examples/founder-journal/data/2026-05-25.md"}

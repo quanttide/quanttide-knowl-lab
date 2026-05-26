@@ -51,7 +51,7 @@ func main() {
 func run(fs *flag.FlagSet, args []string) error {
 	input := fs.String("input", "./parsed", "input directory with parsed JSON files")
 	output := fs.String("output", "./knowl/triples.jsonl", "output triples file")
-	model := fs.String("model", "gpt-4o-mini", "LLM model name")
+	model := fs.String("model", "deepseek-chat", "LLM model name")
 	apiURL := fs.String("api-url", "https://api.openai.com/v1", "OpenAI-compatible API URL")
 	maxFails := fs.Int("max-fails", 3, "max consecutive failures per source before removal")
 	fs.Parse(args)

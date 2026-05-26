@@ -1,5 +1,5 @@
-<question>我的感觉是什么？</question>
-<answer>安全感和控制感变强</answer>
+<question>我感觉到什么？</question>
+<answer>心里的安全感和控制感变强了</answer>
 
 <question>半自动挡提升什么？</question>
 <answer>工作效率</answer>
@@ -7,137 +7,152 @@
 <question>清醒的自我觉察是什么？</question>
 <answer>AI时代的核心竞争力</answer>
 
+<question>清醒的自我觉察帮助什么？</question>
+<answer>把自己翻译给AI提高生产力</answer>
+
 <question>数据契约协议不适合谁？</question>
 <answer>我</answer>
+
+<question>数据契约协议假设什么？</question>
+<answer>相对结构化的数据表格</answer>
 
 <question>工具箱最核心的部分是什么？</question>
 <answer>契约</answer>
 
-<question>我能坚持的原因是什么？</question>
-<answer>想象出来的未来和存在的路径</answer>
+<question>我坚持什么？</question>
+<answer>在回报低的情况下长期坚持</answer>
 
-<question>DeepSeek给很多上下文有什么效果？</question>
-<answer>有奇效</answer>
+<question>我想象什么？</question>
+<answer>未来并认为存在路径</answer>
 
-<question>我在傍晚情绪如何？</question>
-<answer>容易低落</answer>
+<question>AI缺乏什么？</question>
+<answer>准确的抽象和建模能力</answer>
 
-<question>AI在抽象和建模方面表现如何？</question>
-<answer>表现较差</answer>
-
-<question>AI是什么？</question>
-<answer>人的垫脚石</answer>
-
-<question>OpenCode源码存在什么问题？</question>
+<question>Opencode存在什么？</question>
 <answer>工程质量问题</answer>
 
-<question>用户的想法具有什么特点？</question>
-<answer>全面性和超前性</answer>
+<question>AI的思路与什么基本一致？</question>
+<answer>作者的思路</answer>
 
-<question>用户进入什么阶段？</question>
+<question>作者进入什么阶段？</question>
 <answer>生产级研发阶段</answer>
 
-<question>用户增加了什么字段？</question>
-<answer>status字段</answer>
+<question>作者增加了什么？</question>
+<answer>status字段记录当前状态</answer>
 
-<question>用户增加了什么字段？</question>
-<answer>to do字段</answer>
+<question>作者还增加了什么？</question>
+<answer>to do字段记录待办事项</answer>
 
-<question>Roadmap变为？</question>
+<question>Roadmap变为什么？</question>
 <answer>小版本发布目标且不写具体做法</answer>
 
-<question>用户制作了什么？</question>
-<answer>4个智能体，每个4个技能</answer>
+<question>作者创建了什么？</question>
+<answer>4个智能体，每个有4个技能</answer>
 
 <question>智能体的技能包括什么？</question>
-<answer>设计师、产品设计、执行迭代式、评审、重构</answer>
+<answer>设计、产品设计、执行迭代、评审、重构</answer>
 
-<question>DeepSeek评估成熟度为多少？</question>
-<answer>5%~8%</answer>
+<question>当前系统的成熟度被评估为什么？</question>
+<answer>5%到8%</answer>
 
-<question>用户的生产效率在成熟度5%~8%时如何？</question>
-<answer>已经很高且有代差</answer>
+<question>个人规范经历什么？</question>
+<answer>从隐式到显示、从不确定到确定的演化过程</answer>
 
-<question>个人规范的演化过程是什么？</question>
-<answer>从隐式到显示，从不确定到确定</answer>
+<question>系统构建在找到节奏后怎样？</question>
+<answer>大大加快</answer>
 
 <question>知识云和DevOps云拥有什么？</question>
 <answer>第一个阶段的CLI</answer>
 
-<question>DDD被用来驱动什么？</question>
-<answer>重构</answer>
+<question>DDD被用来做什么？</question>
+<answer>驱动重构</answer>
 
-<question>DDD存在什么问题？</question>
+<question>DDD存在什么？</question>
 <answer>过度建模的可能性</answer>
 
-<question>AI发现了什么？</question>
+<question>AI发现什么？</question>
 <answer>模型有问题</answer>
 
-<question>AI修改了什么？</question>
-<answer>两个小问题</answer>
+<question>AI承认什么？</question>
+<answer>自己的实现有问题</answer>
 
-<question>知识工程智能体被封装成什么？</question>
-<answer>（昨天做的）</answer>
+<question>AI发现的模型问题表明什么？</question>
+<answer>建模水平已经足够经验</answer>
 
-<question>流程被改为？</question>
-<answer>简化流程</answer>
+<question>AI发现的两个问题源于什么？</question>
+<answer>对模型理解不够</answer>
 
-<question>今天提交数是什么？</question>
-<answer>昨天的三倍</answer>
+<question>双系统切换导致什么？</question>
+<answer>负担很重</answer>
 
-<question>我正在做什么？</question>
-<answer>将 example 和 platform 彻底分开</answer>
+<question>我正在分开什么？</question>
+<answer>example 和 platform</answer>
 
-<question>我让AI做什么？</question>
-<answer>只在 example 操作</answer>
+<question>AI操作于什么？</question>
+<answer>example</answer>
 
-<question>智慧具有什么特点？</question>
-<answer>非常广泛的用处</answer>
+<question>智慧具有什么？</question>
+<answer>交付价值的东西</answer>
 
-<question>具备交付价值的东西是什么？</question>
-<answer>一个具备智慧的产品</answer>
+<question>知识是什么？</question>
+<answer>记忆块</answer>
 
-<question>智慧是什么？</question>
-<answer>交付层</answer>
-
-<question>对AI的智慧可能是什么？</question>
+<question>对AI的智慧是什么？</question>
 <answer>提示词技能</answer>
 
 <question>对人类的智慧是什么？</question>
 <answer>各种产出</answer>
 
-<question>Rust写代码比Python写代码如何？</question>
+<question>Rust语言比Python语言怎样？</question>
 <answer>结构化强</answer>
+
+<question>语言的编程习惯暗示了什么？</question>
+<answer>AI的编程习惯</answer>
+
+<question>我的精力成为什么？</question>
+<answer>最贵的资源</answer>
+
+<question>几个小时的AI时间可以换取什么？</question>
+<answer>一个小时的我的时间</answer>
 
 <question>混合工程处于什么状态？</question>
 <answer>能上传能下载的状态</answer>
 
-<question>Rust支持的机制如何？</question>
-<answer>比较符合现代的工程规范</answer>
+<question>Rust支持什么？</question>
+<answer>符合现代工程规范的机制</answer>
 
-<question>先实验代码再开发的方法极大程度地减少了什么？</question>
+<question>Python需要什么？</question>
+<answer>反复调教AI以节省时间</answer>
+
+<question>先实验代码再开发的方法减少什么？</question>
 <answer>工程上的难点</answer>
 
-<question>开始上生产的条件是什么？</question>
-<answer>功能全部完善</answer>
+<question>研发流程被怎样？</question>
+<answer>平滑化</answer>
 
-<question>发布新版本让什么增加？</question>
-<answer>心里安全感增加</answer>
+<question>功能完善是什么？</question>
+<answer>开始上生产的条件</answer>
 
-<question>课程质量如何？</question>
-<answer>明显下降，需要加强评估</answer>
+<question>发布新版本增加什么？</question>
+<answer>心理安全感</answer>
 
-<question>绩效被引入到哪里？</question>
-<answer>课堂组织</answer>
+<question>课程质量出现什么？</question>
+<answer>明显下降</answer>
 
-<question>Token用量稳定在多少？</question>
-<answer>每天 5 亿左右 10 块钱</answer>
+<question>课堂评估本质是什么？</question>
+<answer>绩效活动</answer>
 
-<question>我使用AI做什么？</question>
-<answer>跑几十轮迭代找到产品核心功能</answer>
+<question>将绩效引入课堂组织是什么？</question>
+<answer>一个创新点</answer>
 
-<question>知识云帮助做什么？</question>
-<answer>抽取文本信息，找到知识结构，构建实验代码</answer>
+<question>Token用量稳定在什么水平？</question>
+<answer>每天5亿左右10块钱</answer>
+
+<question>烧Token的直接原因是什么？</question>
+<answer>它可以带来产出</answer>
+
+<question>知识云帮助什么？</question>
+<answer>抽取文本信息、找到知识结构、构建实验代码</answer>
 
 <question>知识云的核心价值是什么？</question>
 <answer>隐性经验显性化的工业化流水线</answer>
@@ -145,18 +160,18 @@
 <question>从信息到知识这一步是什么？</question>
 <answer>知识抽取的关键</answer>
 
-<question>知识云承担了什么功能？</question>
+<question>知识云承担什么？</question>
 <answer>大量的实验和探索功能</answer>
 
-<question>人类立宪、AI立法已经正式成立什么？</question>
-<answer>角色</answer>
+<question>人类立宪、AI立法的角色正式成立根据什么？</question>
+<answer>AI反馈</answer>
 
-<question>我坚持建模不改导致什么？</question>
-<answer>AI改变自己的想法朝我的方向发展</answer>
+<question>重构的精神需要什么？</question>
+<answer>人类的高质量代码做支撑</answer>
 
 <question>安全感是什么？</question>
 <answer>搭基础库时产生的围栏感</answer>
 
-<question>审计概念的出现让我感觉到什么？</question>
-<answer>以后再接入类似功能不会混乱</answer>
+<question>审计概念的出现让作者感觉到什么？</question>
+<answer>以后再接入类似功能时不会混乱</answer>
 
