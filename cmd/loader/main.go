@@ -22,7 +22,7 @@ func main() {
 }
 
 func run(fs *flag.FlagSet, args []string) error {
-	input := fs.String("input", "./triples.jsonl", "input triples file")
+	input := fs.String("input", "./knowl/triples.jsonl", "input triples file")
 	threshold := fs.Float64("threshold", 0.7, "confidence threshold for auto-insert")
 	fs.Parse(args)
 

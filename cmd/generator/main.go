@@ -33,7 +33,7 @@ func run(fs *flag.FlagSet, args []string) error {
 	model := fs.String("model", "deepseek-chat", "LLM model name")
 	outFormat := fs.String("format", "markdown", "FAQ output format (markdown / sharegpt / alpaca / reasoning)")
 	eval := fs.Bool("eval", false, "evaluate FAQ quality against source triples")
-	evalTriples := fs.String("eval-triples", "./info/triples.jsonl", "source triples for evaluation")
+	evalTriples := fs.String("eval-triples", "./knowl/triples.jsonl", "source triples for evaluation")
 	fs.Parse(args)
 
 	if *eval {
@@ -91,7 +91,9 @@ func run(fs *flag.FlagSet, args []string) error {
 
 func loadFacts(storePath, query string) ([]generator.Fact, error) {
 	predicate := query
-	if strings.Contains(query, "(") {
+	if predicate == "*" {
+		predicate = ""
+	} else if strings.Contains(query, "(") {
 		atom, err := rule.ParseAtom(query)
 		if err == nil {
 			predicate = atom.Predicate

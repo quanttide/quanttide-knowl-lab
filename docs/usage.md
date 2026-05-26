@@ -30,7 +30,7 @@ go run ./cmd/extractor -input ./docs -output ./parsed
 
 ```bash
 export OPENAI_API_KEY="sk-..."
-go run ./cmd/assessor -input ./parsed -output ./triples.jsonl
+go run ./cmd/assessor -input ./parsed -output ./knowl/triples.jsonl
 ```
 
 输出格式：每行一个 JSON 三元组（subject, predicate, object, confidence, source, context）。
@@ -40,7 +40,7 @@ go run ./cmd/assessor -input ./parsed -output ./triples.jsonl
 按置信度阈值分类，高置信度写入 JSON 图谱存储。
 
 ```bash
-go run ./cmd/loader -input ./triples.jsonl -threshold 0.7
+go run ./cmd/loader -input ./knowl/triples.jsonl -threshold 0.7
 ```
 
 阈值策略：≥0.7 自动入库，0.4–0.7 暂存待确认（low-confidence.jsonl），<0.4 不入库。

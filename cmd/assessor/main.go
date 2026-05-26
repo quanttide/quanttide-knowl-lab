@@ -50,7 +50,7 @@ func main() {
 
 func run(fs *flag.FlagSet, args []string) error {
 	input := fs.String("input", "./parsed", "input directory with parsed JSON files")
-	output := fs.String("output", "./triples.jsonl", "output triples file")
+	output := fs.String("output", "./knowl/triples.jsonl", "output triples file")
 	model := fs.String("model", "gpt-4o-mini", "LLM model name")
 	apiURL := fs.String("api-url", "https://api.openai.com/v1", "OpenAI-compatible API URL")
 	maxFails := fs.Int("max-fails", 3, "max consecutive failures per source before removal")
@@ -151,6 +151,7 @@ func assessChunk(client *llm.Client, source string, chunk chunker.Chunk) ([]*tri
 	}
 
 	content := resp.Choices[0].Message.Content
+	content = stripCodeBlock(content)
 
 	var extraction LLMExtraction
 	if err := json.Unmarshal([]byte(content), &extraction); err != nil {
@@ -182,4 +183,13 @@ func assessChunk(client *llm.Client, source string, chunk chunker.Chunk) ([]*tri
 	}
 
 	return triples, nil
+}
+
+func stripCodeBlock(s string) string {
+	s = strings.TrimSpace(s)
+	for _, p := range []string{"```json", "```", "``"} {
+		s = strings.TrimPrefix(s, p)
+		s = strings.TrimSuffix(s, p)
+	}
+	return strings.TrimSpace(s)
 }
