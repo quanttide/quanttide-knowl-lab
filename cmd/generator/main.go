@@ -32,7 +32,17 @@ func run(fs *flag.FlagSet, args []string) error {
 	apiURL := fs.String("api-url", "", "LLM API URL (optional, enables LLM-enhanced FAQ)")
 	model := fs.String("model", "deepseek-chat", "LLM model name")
 	outFormat := fs.String("format", "markdown", "FAQ output format (markdown / sharegpt / alpaca / reasoning)")
+	eval := fs.Bool("eval", false, "evaluate FAQ quality against source triples")
+	evalTriples := fs.String("eval-triples", "./info/triples.jsonl", "source triples for evaluation")
 	fs.Parse(args)
+
+	if *eval {
+		if *apiURL == "" {
+			return fmt.Errorf("-eval 需要 -api-url 和 DEEPSEEK_API_KEY")
+		}
+		client := llm.New(*apiURL, os.Getenv("DEEPSEEK_API_KEY"), *model)
+		return runEval(client, *output, *evalTriples)
+	}
 
 	gen, err := generator.GetGenerator(*target)
 	if err != nil {
