@@ -43,7 +43,7 @@ go run ./cmd/assessor -input ./parsed -output ./triples.jsonl
 go run ./cmd/loader -input ./triples.jsonl -threshold 0.7
 ```
 
-阈值策略：≥0.7 自动入库，0.4–0.7 暂存待确认（pending.jsonl），<0.4 不入库。
+阈值策略：≥0.7 自动入库，0.4–0.7 暂存待确认（low-confidence.jsonl），<0.4 不入库。
 
 ## cmd/reasoner — 推理
 

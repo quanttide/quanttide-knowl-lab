@@ -2,7 +2,7 @@
 
 ## 项目概览
 
-量潮知识工程通用示例项目。Go 实现的 DIKW 管线：Data → Information → Knowledge → Wisdom。
+量潮知识工程通用示例项目。Go 实现的 DIKW 管线：data → info → knowl → wisdom。
 
 ## 目录结构
 

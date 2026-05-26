@@ -70,7 +70,7 @@ func run(fs *flag.FlagSet, args []string) error {
 	fmt.Printf("✓ 成功入库 %d 条三元组\n", inserted)
 
 	if len(result.Pending) > 0 {
-		pendingPath := filepath.Join(filepath.Dir(*input), "pending.jsonl")
+		pendingPath := filepath.Join(filepath.Dir(*input), "low-confidence.jsonl")
 		f, err := os.Create(pendingPath)
 		if err == nil {
 			defer f.Close()
