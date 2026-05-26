@@ -164,7 +164,7 @@ func formatAlpaca(pairs []qaPair) string {
 func formatReasoning(pairs []qaPair) string {
 	var buf strings.Builder
 	for _, p := range pairs {
-		buf.WriteString(fmt.Sprintf("<question>%s</question>\n<think>%s</think>\n<answer>%s</answer>\n\n", p.Question, p.Answer, p.Answer))
+		buf.WriteString(fmt.Sprintf("<question>%s</question>\n<answer>%s</answer>\n\n", p.Question, p.Answer))
 	}
 	return buf.String()
 }
