@@ -5,17 +5,25 @@ import (
 	"testing"
 )
 
-func TestGenerateQuestion(t *testing.T) {
-	f := Fact{Subject: "订单", Predicate: "包含", Object: "商品"}
-	q := generateQuestion(f)
-	if q == "" {
-		t.Error("expected non-empty question")
+func TestBePredicate(t *testing.T) {
+	f := Fact{Subject: "AI", Predicate: "是", Object: "生产力"}
+	q := templateQuestion(f)
+	if q != "AI 是什么？" {
+		t.Errorf("expected 'AI 是什么？', got %s", q)
+	}
+	a := templateAnswer(f)
+	if a != "AI 是 生产力。" {
+		t.Errorf("expected 'AI 是 生产力。', got %s", a)
 	}
 }
 
-func TestGenerateAnswer(t *testing.T) {
+func TestNormalPredicate(t *testing.T) {
 	f := Fact{Subject: "订单", Predicate: "包含", Object: "商品"}
-	a := generateAnswer(f)
+	q := templateQuestion(f)
+	if q != "订单 的 包含 是什么？" {
+		t.Errorf("expected '订单 的 包含 是什么？', got %s", q)
+	}
+	a := templateAnswer(f)
 	if !contains(a, "订单") || !contains(a, "商品") {
 		t.Errorf("answer should contain subject and object: %s", a)
 	}

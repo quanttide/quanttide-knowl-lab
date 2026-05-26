@@ -11,6 +11,7 @@ import (
 	"strings"
 
 	"github.com/quanttide/quanttide-example-of-knowledge-engineering/internal/generator"
+	"github.com/quanttide/quanttide-example-of-knowledge-engineering/internal/llm"
 	"github.com/quanttide/quanttide-example-of-knowledge-engineering/internal/rule"
 	"github.com/quanttide/quanttide-example-of-knowledge-engineering/internal/storage"
 )
@@ -28,11 +29,24 @@ func run(fs *flag.FlagSet, args []string) error {
 	query := fs.String("query", "", "query predicate (e.g. contains)")
 	output := fs.String("output", "./generated", "output directory or file")
 	store := fs.String("store", "./knowl/store.jsonl", "path to store.jsonl")
+	apiURL := fs.String("api-url", "", "LLM API URL (optional, enables LLM-enhanced FAQ)")
+	model := fs.String("model", "deepseek-chat", "LLM model name")
+	outFormat := fs.String("format", "markdown", "FAQ output format (markdown / sharegpt / alpaca / reasoning)")
 	fs.Parse(args)
 
 	gen, err := generator.GetGenerator(*target)
 	if err != nil {
 		return err
+	}
+
+	if *target == "faq" {
+		if faqGen, ok := gen.(*generator.FAQGenerator); ok {
+			faqGen.SetOutFormat(*outFormat)
+			if *apiURL != "" {
+				c := llm.New(*apiURL, os.Getenv("DEEPSEEK_API_KEY"), *model)
+				faqGen.SetLLMClient(c)
+			}
+		}
 	}
 
 	facts, err := loadFacts(*store, *query)

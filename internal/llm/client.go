@@ -66,7 +66,6 @@ func (c *Client) Chat(messages []Message) (*Response, error) {
 		Messages:    messages,
 		Temperature: 0.1,
 		MaxTokens:   2048,
-		Format:      &ResponseFormat{Type: "json_object"},
 	}
 
 	var lastErr error

@@ -1,20 +1,16 @@
-# FAQ - 常见问题
+<question>大部分活页纸是什么？</question>
+<think>她看不懂的软件设计稿</think>
+<answer>她看不懂的软件设计稿</answer>
 
-> 基于 4 条知识事实自动生成
+<question>一张活页纸是什么？</question>
+<think>一封关于她的信</think>
+<answer>一封关于她的信</answer>
 
-## Q1: 大部分活页纸 的 是 是什么？
+<question>信是什么？</question>
+<think>29岁的他写给19岁的自己的信</think>
+<answer>29岁的他写给19岁的自己的信</answer>
 
-大部分活页纸 的 是 是 她看不懂的软件设计稿。
-
-## Q2: 一张活页纸 的 是 是什么？
-
-一张活页纸 的 是 是 一封关于她的信。
-
-## Q3: 信 的 是 是什么？
-
-信 的 是 是 29岁的他写给19岁的自己的信。
-
-## Q4: 拖鞋 的 是 是什么？
-
-拖鞋 的 是 是 Hello Kitty 款式。
+<question>拖鞋是什么？</question>
+<think>Hello Kitty 款式</think>
+<answer>Hello Kitty 款式</answer>
 

@@ -1,44 +1,40 @@
-# FAQ - 常见问题
+<question>清醒的自我觉察是什么？</question>
+<think>AI时代的核心竞争力</think>
+<answer>AI时代的核心竞争力</answer>
 
-> 基于 10 条知识事实自动生成
+<question>工具箱最核心的部分是什么？</question>
+<think>契约</think>
+<answer>契约</answer>
 
-## Q1: 清醒的自我觉察 的 是 是什么？
+<question>AI是什么？</question>
+<think>人的垫脚石</think>
+<answer>人的垫脚石</answer>
 
-清醒的自我觉察 的 是 是 AI时代的核心竞争力。
+<question>今天提交数是什么？</question>
+<think>昨天的三倍</think>
+<answer>昨天的三倍</answer>
 
-## Q2: 工具箱最核心的部分 的 是 是什么？
+<question>具备交付价值的东西是什么？</question>
+<think>一个具备智慧的产品</think>
+<answer>一个具备智慧的产品</answer>
 
-工具箱最核心的部分 的 是 是 契约。
+<question>智慧是什么？</question>
+<think>交付层</think>
+<answer>交付层</answer>
 
-## Q3: AI 的 是 是什么？
+<question>对人类的智慧是什么？</question>
+<think>各种产出</think>
+<answer>各种产出</answer>
 
-AI 的 是 是 人的垫脚石。
+<question>功能全部完善是什么？</question>
+<think>开始上生产的条件</think>
+<answer>开始上生产的条件</answer>
 
-## Q4: 今天提交数 的 是 是什么？
+<question>从信息到知识这一步是什么？</question>
+<think>知识抽取的关键</think>
+<answer>知识抽取的关键</answer>
 
-今天提交数 的 是 是 昨天的三倍。
-
-## Q5: 具备交付价值的东西 的 是 是什么？
-
-具备交付价值的东西 的 是 是 一个具备智慧的产品。
-
-## Q6: 智慧 的 是 是什么？
-
-智慧 的 是 是 交付层。
-
-## Q7: 对人类的智慧 的 是 是什么？
-
-对人类的智慧 的 是 是 各种产出。
-
-## Q8: 功能全部完善 的 是 是什么？
-
-功能全部完善 的 是 是 开始上生产的条件。
-
-## Q9: 从信息到知识这一步 的 是 是什么？
-
-从信息到知识这一步 的 是 是 知识抽取的关键。
-
-## Q10: 安全感 的 是 是什么？
-
-安全感 的 是 是 搭基础库时产生的围栏感。
+<question>安全感是什么？</question>
+<think>搭基础库时产生的围栏感</think>
+<answer>搭基础库时产生的围栏感</answer>
 
