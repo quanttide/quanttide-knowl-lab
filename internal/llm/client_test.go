@@ -117,10 +117,20 @@ func TestClientChatRetry(t *testing.T) {
 }
 
 func TestPromptNotEmpty(t *testing.T) {
-	if AssessmentPrompt == "" {
+	p := AssessmentPrompt()
+	if p == "" {
 		t.Error("AssessmentPrompt should not be empty")
 	}
-	if len(AssessmentPrompt) < 100 {
+	if len(p) < 100 {
 		t.Error("AssessmentPrompt seems too short")
+	}
+	if GetPrompt("fiction") == "" {
+		t.Error("fiction prompt should not be empty")
+	}
+	if GetPrompt("technical") == "" {
+		t.Error("technical prompt should not be empty")
+	}
+	if GetPrompt("nonexistent") != AssessmentPrompt() {
+		t.Error("unknown domain should fallback to default")
 	}
 }

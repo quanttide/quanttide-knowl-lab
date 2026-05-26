@@ -54,9 +54,11 @@ func run(fs *flag.FlagSet, args []string) error {
 	model := fs.String("model", "deepseek-chat", "LLM model name")
 	apiURL := fs.String("api-url", "https://api.openai.com/v1", "OpenAI-compatible API URL")
 	maxFails := fs.Int("max-fails", 3, "max consecutive failures per source before removal")
+	domain := fs.String("domain", "default", "domain-specific prompt (default / fiction / technical)")
 	fs.Parse(args)
 
 	llmClient := llm.New(*apiURL, os.Getenv("OPENAI_API_KEY"), *model)
+	prompt := llm.GetPrompt(*domain)
 
 	entries, err := os.ReadDir(*input)
 	if err != nil {
@@ -94,7 +96,7 @@ func run(fs *flag.FlagSet, args []string) error {
 		consecFails := 0
 
 		for _, chunk := range chunks {
-			triples, err := assessChunk(llmClient, doc.Path, chunk)
+			triples, err := assessChunk(llmClient, prompt, doc.Path, chunk)
 			if err != nil {
 				consecFails++
 				errors = append(errors, AssessorError{
@@ -139,9 +141,9 @@ func readParsedDoc(path string) (*ParsedDoc, error) {
 	return &doc, nil
 }
 
-func assessChunk(client *llm.Client, source string, chunk chunker.Chunk) ([]*triple.Triple, error) {
+func assessChunk(client *llm.Client, prompt, source string, chunk chunker.Chunk) ([]*triple.Triple, error) {
 	messages := []llm.Message{
-		{Role: "system", Content: llm.AssessmentPrompt},
+		{Role: "system", Content: prompt},
 		{Role: "user", Content: chunk.Text},
 	}
 
