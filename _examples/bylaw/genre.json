@@ -1,0 +1,8 @@
+{
+  "genre": "Manual",
+  "contract": {
+    "form": "手册",
+    "granularity": "章节",
+    "lifecycle_stages": ["编写", "评审", "发布", "修订"]
+  }
+}

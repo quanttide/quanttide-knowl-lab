@@ -16,3 +16,12 @@ clean:
 
 extractor:
 	go run ./cmd/extractor -input ./docs -output ./parsed
+
+genre-detect:
+	go run ./cmd/genre detect -input _examples/bylaw
+
+genre-validate:
+	go run ./cmd/genre validate -input _examples/bylaw
+
+genre-transcode:
+	go run ./cmd/genre transcode -input _examples/bylaw -output _examples/bylaw/archive

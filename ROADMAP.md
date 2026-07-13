@@ -1,8 +1,6 @@
 # ROADMAP
 
 > 以知识体裁（Knowledge Genre）为核心的 DIKW 管线实验室。
->
-> 每个版本交付的不是功能，是可独立验证的体裁转换能力。
 
 ## 已完成版本
 
@@ -14,90 +12,71 @@
 | v0.4.0 | 智慧生成 | `cmd/generator` + `internal/generator` |
 | v0.5.0 | 多源融合 | `cmd/federate` + `internal/source` |
 
+v0.1–v0.5 构建了通用的 DIKW 管线。v0.6–v0.8 将管线与知识体裁对齐。
+
 ---
 
-## v0.6.0 — 体裁识别（Genre Detection）
+## v0.6.0 — 体裁识别
 
-> 输入任意文档，自动识别其知识体裁。
+> 输入任意文档，自动识别其知识体裁。基于现有 `_examples/bylaw`（Manual 体裁）跑通识别管线。
 
 核心能力：
-- 体裁分类器：判断输入属于语境/日志/档案/手册或未分类
-- 体裁特征提取：从文档结构、措辞模式、元数据中提取体裁特征
-- 混合体裁检测：单一文档可能包含多种体裁（如语境中嵌入日志引用）
+- 体裁分类器：规则驱动（关键字 + 目录结构特征），识别 Manual / 其他
+- 体裁元数据注入：在 `_examples/bylaw/` 下声明体裁标签与契约
 
 CLI 入口：
 ```
-go run ./cmd/genre detect -input _examples/founder-journal/data
+go run ./cmd/genre detect -input _examples/bylaw
 ```
 
 交付物：
-- `cmd/genre/` — 体裁检测 CLI
-- `internal/genre/` — 体裁模型、分类器、特征提取器
-- 体裁分类准确率 ≥ 80%（基于现有 _examples 场景）
+- `cmd/genre/` — 体裁 CLI（子命令模式：`detect` / `validate` / `transcode`）
+- `internal/genre/` — 体裁模型、分类器
+- `_examples/bylaw/genre.json` — Manual 体裁元数据
+- `cmd/genre/main_test.go` — 各子命令集成测试
 
 ---
 
-## v0.7.0 — 体裁校验（Genre Validation）
+## v0.7.0 — 体裁校验
 
-> 校验任意体裁的知识是否符合 Domain/Ontology/Instance 契约。
+> 校验文档是否符合其体裁契约。以 Manual 体裁的契约（形式、粒度、生命周期阶段）验证 bylaw 的结构完整性。
 
 核心能力：
-- 结构校验：字段完整、引用有效、类型匹配
-- 跨体裁一致性校验：同一知识在语境和档案中的描述不自相矛盾
-- 本体契约检查：Instance 引用的 Ontology 存在且字段对齐
+- 结构校验：data/info/knowl/wisdom 各层齐全
+- 字段校验：每层关键字段存在
+- 跨层一致性校验：info 问答对 ↔ knowl 三元组对照
 
 CLI 入口：
 ```
-go run ./cmd/genre validate -input data/journal/2026-07-13.md -schema knowledge-schema.json
+go run ./cmd/genre validate -input _examples/bylaw -schema _examples/bylaw/genre.json
 ```
 
 交付物：
 - `cmd/genre validate` — 校验子命令
 - `internal/genre/validator/` — 校验引擎
-- 知识体裁的 JSON Schema 定义（三要素：形式、粒度、生命周期阶段）
+- Manual 体裁契约定义（内嵌于 `internal/genre/`）
+- 校验报告格式（通过 / 警告 / 错误）
 
 ---
 
-## v0.8.0 — 体裁转换（Genre Transcoding）
+## v0.8.0 — 体裁转换
 
-> 同一条知识，在不同体裁之间双向转换。
+> 将 Manual 体裁的知识转换为 Archive 体裁的结构化 Instance。验证转换后产物符合 Archive 契约。
 
 核心能力：
-- 语境 → 档案：抽取叙述中的设计决策，结构化为 Instance
-- 日志 → 档案：按时序聚合日志中的判断，沉淀为 Instance
-- 档案 → 手册：将结构化知识编译为可执行的指令序列
-- 统一中间表示：所有转换经过 Domain/Ontology/Instance 骨架
+- Manual → Archive 单向转换（bylaw → 结构化 Instance）
+- 转换后 Archive 的体裁自校验
 
 CLI 入口：
 ```
-go run ./cmd/genre transcode -from journal -to archive -input journal/entry.md -output archive/entry.json
+go run ./cmd/genre transcode -from manual -to archive -input _examples/bylaw -output _examples/bylaw/archive
 ```
 
 交付物：
-- `cmd/genre transcode` — 体裁转换子命令
-- `internal/genre/transcoder/` — 转换器（每个体裁对一条转换路径）
-- 基准场景：founder-journal（日志 → 档案）完整管线演示
-
----
-
-## v0.9.0 — 体裁追溯（Genre Trace）
-
-> 从档案中的一个 Instance，追溯到它在语境和日志中的原始形态。
-
-核心能力：
-- 向上追溯：Instance → 日志条目 → 语境讨论（来源回溯）
-- 向下追溯：语境讨论 → 日志决策 → 档案 Instance（沉淀追踪）
-- 变更历史：同一知识在不同体裁中的演化过程
-
-CLI 入口：
-```
-go run ./cmd/genre trace -id <instance-uuid> -depth all
-```
-
-交付物：
-- `cmd/genre trace` — 追溯子命令
-- 追溯链可视化输出（Mermaid / DOT 格式）
-- 端到端演示：founder-fiction（创意写作领域全体裁追溯）
+- `cmd/genre transcode` — 转换子命令
+- `internal/genre/transcoder/` — 转换器
+- Archive 体裁契约定义
+- 收集第二个体裁的原始数据（如 `_examples/journal/`），为多体裁验证提供基础
 
 ---
 
@@ -106,16 +85,13 @@ go run ./cmd/genre trace -id <instance-uuid> -depth all
 ```
 版本    能力          输入 → 输出                    体裁维度
 ────────────────────────────────────────────────────────────
-v0.1   数据提取      docs/*.md → parsed              无（原材料）
-v0.2   信息评估      parsed → triples                无（原材料）
-v0.3   知识推理      triples → store                 无（原材料）
-v0.4   智慧生成      store → code/faq/api            无（原材料）
-v0.5   多源融合      multi-source → unified triples  无（原材料）
+v0.1   数据提取      docs/*.md → parsed              无
+v0.2   信息评估      parsed → triples                无
+v0.3   知识推理      triples → store                 无
+v0.4   智慧生成      store → code/faq/api            无
+v0.5   多源融合      multi-source → unified triples  无
 ────────────────────────────────────────────────────────────
-v0.6   体裁识别      任意文档 → 体裁标签             识别体裁
-v0.7   体裁校验      体裁文档 → 校验报告             结构化验证
+v0.6   体裁识别      _examples/* → 体裁标签          识别
+v0.7   体裁校验      体裁文档 + schema → 校验报告    结构化验证
 v0.8   体裁转换      体裁A → 体裁B                   跨体裁转换
-v0.9   体裁追溯      Instance → 全体裁链路           同源追溯
 ```
-
-v0.1~v0.5 构建了通用的 DIKW 管线。v0.6~v0.9 将管线与知识体裁对齐——让管线不仅能加工知识，还能理解知识的呈现形态，并在不同形态之间自由转换。

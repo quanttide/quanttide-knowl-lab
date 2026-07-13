@@ -12,6 +12,7 @@ cmd/
   reasoner/         # 知识层：Datalog 声明式推理
   generator/        # 智慧层：生成 Go 代码 / API 设计 / FAQ
   federate/         # 多源联合：多数据源融合
+  genre/            # 体裁管线：识别 / 校验 / 转换
 internal/
   document/         # 文档模型
   markdown/         # Markdown + YAML 解析器
@@ -22,6 +23,7 @@ internal/
   rule/             # Datalog 规则引擎
   generator/        # 多目标生成器
   source/           # 多数据源接口
+  genre/            # 体裁模型、分类器、校验器、转换器
 docs/               # 使用文档
 ```
 
@@ -50,6 +52,15 @@ go run ./cmd/reasoner -rule ./rules.mgl -query "my_predicate(?X, ?Y)"
 
 # 生成
 go run ./cmd/generator -target code -query "my_predicate(?X, ?Y)" -output ./generated
+
+# 体裁识别
+go run ./cmd/genre detect -input _examples/bylaw
+
+# 体裁校验
+go run ./cmd/genre validate -input _examples/bylaw
+
+# 体裁转换（Manual → Archive）
+go run ./cmd/genre transcode -input _examples/bylaw -output _examples/bylaw/archive
 ```
 
 ## 许可
